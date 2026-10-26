@@ -6,17 +6,16 @@
  * @return {object}
  */
 function convertToObject(sourceString) {
-  const result = {};
   const styles = sourceString.split(';');
 
-  for (const style of styles) {
+  return styles.reduce((acc, style) => {
     const properties = style.split(':');
     const lines = properties.map((property) => property.trim());
 
-    result[lines[0]] = lines[1];
-  }
+    acc[lines[0]] = lines[1];
 
-  return result;
+    return acc;
+  }, {});
 }
 
 module.exports = convertToObject;
