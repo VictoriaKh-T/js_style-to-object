@@ -6,7 +6,7 @@
  * @return {object}
  */
 function convertToObject(sourceString) {
-  const styles = sourceString.split(';');
+  const styles = sourceString.split(';').filter((line) => line.trim());
 
   return styles.reduce((acc, style) => {
     const properties = style.split(':');
